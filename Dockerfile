@@ -16,6 +16,8 @@ RUN set -ex \
         git \
         libc-dev \
         libffi-dev \
+        libxml2-dev \
+        libxslt-dev \
         linux-headers \
         musl-dev \
         openssh-client \

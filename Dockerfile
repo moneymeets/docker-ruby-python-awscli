@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 RUN set -ex \
     && apk add --update --no-cache \
         ca-certificates python3 python3-dev \
-    && pip3 install --upgrade pip setuptools wheel pipenv awscli requests \
+    && pip3 install --upgrade pip setuptools wheel pipenv awscli requests nose \
     && rm -r /root/.cache
 
 RUN set -ex \

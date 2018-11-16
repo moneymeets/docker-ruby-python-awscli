@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 RUN set -ex \
     && apk add --update --no-cache \
         ca-certificates python3 python3-dev \
-    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 awscli requests nose \
+    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 awscli requests nose heroku3 \
     && rm -r /root/.cache
 
 RUN set -ex \

@@ -1,13 +1,7 @@
-FROM alpine:3.8
-
-# http://bugs.python.org/issue19846
-# > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
-ENV LANG C.UTF-8
+FROM python:3.7-alpine3.8
 
 RUN set -ex \
-    && apk add --update --no-cache \
-        ca-certificates python3 python3-dev \
-    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 awscli requests nose heroku3 \
+    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose \
     && rm -r /root/.cache
 
 RUN set -ex \
@@ -31,5 +25,7 @@ RUN set -ex \
         ruby-json \
         ruby-rdoc \
         zlib-dev
+
+ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
 
 CMD ["/bin/sh"]

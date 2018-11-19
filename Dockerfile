@@ -26,4 +26,6 @@ RUN set -ex \
         ruby-rdoc \
         zlib-dev
 
+ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
+
 CMD ["/bin/sh"]

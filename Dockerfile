@@ -31,4 +31,4 @@ RUN set -ex \
 
 ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
 
-CMD ["/bin/sh"]
+CMD ["/bin/sh", "-l"]

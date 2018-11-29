@@ -29,6 +29,9 @@ RUN set -ex \
         ruby-rdoc \
         zlib-dev
 
+# Force ash to source .profile for non-login shells
+ENV ENV /root/.profile
+
 ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
 
 CMD ["/bin/sh"]

@@ -28,7 +28,17 @@ RUN set -ex \
         ruby-irb \
         ruby-json \
         ruby-rdoc \
-        zlib-dev
+        zlib-dev \
+        # Pillow dependencies
+        jpeg-dev \
+        freetype-dev \
+        lcms2-dev \
+        openjpeg-dev \
+        tiff-dev \
+        tk-dev \
+        tcl-dev \
+        harfbuzz-dev \
+        fribidi-dev
 
 ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
 

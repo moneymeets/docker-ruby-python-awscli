@@ -1,17 +1,8 @@
 FROM python:3.7-alpine3.8
 
 RUN set -ex \
-    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose \
-    && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
-    && python get-poetry.py \
-    && ln -s /root/.poetry/bin/poetry /usr/local/bin \
-    && ln -s /root/.poetry/lib/poetry /usr/local/lib \
-    && rm -r /root/.cache
-
-RUN set -ex \
     && apk add --update --no-cache \
         build-base \
-        gcc \
         git \
         libc-dev \
         libffi-dev \
@@ -40,6 +31,14 @@ RUN set -ex \
         tcl-dev \
         harfbuzz-dev \
         fribidi-dev
+
+RUN set -ex \
+    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose \
+    && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
+    && python get-poetry.py \
+    && ln -s /root/.poetry/bin/poetry /usr/local/bin \
+    && ln -s /root/.poetry/lib/poetry /usr/local/lib \
+    && rm -r /root/.cache
 
 ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
 

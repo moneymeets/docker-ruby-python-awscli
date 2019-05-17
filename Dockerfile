@@ -11,6 +11,7 @@ RUN set -ex \
 RUN set -ex \
     && apk add --update --no-cache \
         build-base \
+        gcc \
         git \
         libc-dev \
         libffi-dev \

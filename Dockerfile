@@ -33,7 +33,7 @@ RUN set -ex \
         fribidi-dev
 
 RUN set -ex \
-    && pip3 install --upgrade pip==18.1 setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose \
+    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose \
     && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
     && python get-poetry.py \
     && ln -s /root/.poetry/bin/poetry /usr/local/bin \

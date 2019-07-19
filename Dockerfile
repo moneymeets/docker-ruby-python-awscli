@@ -14,6 +14,7 @@ RUN set -ex \
         pcre-dev \
         postgresql-dev \
         rsync \
+        npm \
         ruby \
         ruby-bundler \
         ruby-dev \

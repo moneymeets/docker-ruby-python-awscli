@@ -1,4 +1,6 @@
-FROM python:3.7-alpine3.8
+FROM python:3.8-alpine3.10
+
+ARG POETRY_VERSION=1.0.2
 
 RUN set -ex \
     && apk add --update --no-cache \
@@ -36,7 +38,7 @@ RUN set -ex \
 RUN set -ex \
     && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose Jinja2 Markdown \
     && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
-    && python get-poetry.py \
+    && python get-poetry.py --version $POETRY_VERSION \
     && ln -s /root/.poetry/bin/poetry /usr/local/bin \
     && ln -s /root/.poetry/lib/poetry /usr/local/lib \
     && rm -r /root/.cache

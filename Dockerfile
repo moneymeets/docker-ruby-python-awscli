@@ -1,4 +1,8 @@
-FROM python:3.7-alpine3.8
+ARG BASE_IMAGE_VERSION
+
+FROM python:${BASE_IMAGE_VERSION}
+
+ARG POETRY_VERSION
 
 RUN set -ex \
     && apk add --update --no-cache \
@@ -34,9 +38,10 @@ RUN set -ex \
         fribidi-dev
 
 RUN set -ex \
-    && pip3 install --upgrade pip setuptools wheel pipenv==2018.10.13 docker-compose awscli boto3 heroku3 requests requests-mock nose Jinja2 Markdown \
+    && pip3 install --upgrade setuptools wheel docker-compose awscli boto3 heroku3 requests requests-mock nose Jinja2 Markdown \
     && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
     && python get-poetry.py \
+    && rm get-poetry.py \
     && ln -s /root/.poetry/bin/poetry /usr/local/bin \
     && ln -s /root/.poetry/lib/poetry /usr/local/lib \
     && rm -r /root/.cache

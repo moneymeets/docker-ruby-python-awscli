@@ -6,8 +6,10 @@ ARG POETRY_VERSION
 
 RUN set -ex \
     && apk add --update --no-cache \
+        bash \
         build-base \
         git \
+        docker-cli \
         libc-dev \
         libffi-dev \
         libxml2-dev \
@@ -25,6 +27,7 @@ RUN set -ex \
         ruby-irb \
         ruby-json \
         ruby-rdoc \
+        wget \
         zlib-dev \
         # Pillow dependencies
         jpeg-dev \
@@ -42,10 +45,16 @@ RUN set -ex \
     && wget https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py -O get-poetry.py \
     && python get-poetry.py \
     && rm get-poetry.py \
-    && ln -s /root/.poetry/bin/poetry /usr/local/bin \
-    && ln -s /root/.poetry/lib/poetry /usr/local/lib \
-    && rm -r /root/.cache
+    && ln -s ~/.poetry/bin/poetry /usr/local/bin \
+    && ln -s ~/.poetry/lib/poetry /usr/local/lib \
+    && rm -r ~/.cache
 
 ENV PIPELINES_HELPER .bitbucket-pipelines/bitbucket-pipelines-helper.py
+ENV ACTIONS_HELPER .github/actions-helper/actions-helper.py
+
+RUN set -ex \
+    && mkdir -p /root/.ssh \
+    && ssh-keyscan -H bitbucket.org >> /root/.ssh/known_hosts \
+    && ssh-keyscan -H github.com >> /root/.ssh/known_hosts
 
 CMD ["/bin/sh"]

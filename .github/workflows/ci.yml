@@ -6,7 +6,7 @@ jobs:
 
     env:
       BASE_IMAGE_VERSION: "3.8-alpine3.11"
-      POETRY_VERSION: "1.0.2"
+      POETRY_VERSION: "1.0.5"
       TAG: "python3.8-poetry1.0"
 
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
